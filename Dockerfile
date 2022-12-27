@@ -3,7 +3,7 @@ FROM golang:latest
 ARG HEIMDALL_DIR=/var/lib/heimdall
 ENV HEIMDALL_DIR=$HEIMDALL_DIR
 
-RUN apt-get update -y && apt-get upgrade -y \
+RUN apt-get update -y \
     && apt install build-essential git -y \
     && mkdir -p $HEIMDALL_DIR
 
