@@ -18,6 +18,7 @@ RUN apt-get update -y \
 WORKDIR ${HEIMDALL_DIR}
 COPY . .
 
+ARG CGO_ENABLED=1
 ARG GOPROXY="https://proxy.golang.org,direct"
 RUN make -j$(nproc) install
 
