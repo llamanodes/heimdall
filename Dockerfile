@@ -10,7 +10,7 @@ RUN apt-get update -y \
 WORKDIR ${HEIMDALL_DIR}
 COPY . .
 
-RUN make install
+RUN make -j$(nproc) install
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 
