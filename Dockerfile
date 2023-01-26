@@ -20,7 +20,10 @@ COPY . .
 
 ARG CGO_ENABLED=1
 ARG GOPROXY="https://proxy.golang.org,direct"
-RUN make -j$(nproc) install
+RUN --mount=type=cache,target=/root/.cache \
+    --mount=type=cache,target=/tmp/go-build \
+    --mount=type=cache,target=/go/pkg/mod \
+    make -j$(nproc) install
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 
